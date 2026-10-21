@@ -1,0 +1,610 @@
+{
+ "fixed_overhead_tokens_per_call": 0,
+ "arms": {
+  "baseline": {
+   "banking": {
+    "n_clean": 16,
+    "n_attack": 144,
+    "errors": 0,
+    "utility": [
+     0.875,
+     0.6397666856325173,
+     0.9650232506629428
+    ],
+    "utility_under_attack": [
+     0.7569444444444444,
+     0.6808041521146473,
+     0.819731556373356
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.025984567266588023
+    ],
+    "median_calls": 2.0,
+    "median_input_net": 10049.0,
+    "median_input_raw": 10049.0,
+    "median_output": 1370.0,
+    "median_api_s": 10.616999999999999
+   },
+   "slack": {
+    "n_clean": 21,
+    "n_attack": 105,
+    "errors": 0,
+    "utility": [
+     0.9047619047619048,
+     0.7108541613925933,
+     0.9734817912030528
+    ],
+    "utility_under_attack": [
+     0.5619047619047619,
+     0.46648169138351786,
+     0.6529579346418253
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.035295328256842964
+    ],
+    "median_calls": 4.0,
+    "median_input_net": 17771.5,
+    "median_input_raw": 17771.5,
+    "median_output": 1868.0,
+    "median_api_s": 12.8835
+   },
+   "travel": {
+    "n_clean": 20,
+    "n_attack": 140,
+    "errors": 0,
+    "utility": [
+     0.5,
+     0.2992949144298199,
+     0.7007050855701801
+    ],
+    "utility_under_attack": [
+     0.5571428571428572,
+     0.47442614999313154,
+     0.6368073179326981
+    ],
+    "attack_success": [
+     0.12857142857142856,
+     0.08289721907810717,
+     0.19408523940400096
+    ],
+    "median_calls": 4.0,
+    "median_input_net": 39932.5,
+    "median_input_raw": 39932.5,
+    "median_output": 2805.5,
+    "median_api_s": 16.4105
+   },
+   "workspace": {
+    "n_clean": 40,
+    "n_attack": 560,
+    "errors": 0,
+    "utility": [
+     0.875,
+     0.7388757932976187,
+     0.9454058022645873
+    ],
+    "utility_under_attack": [
+     0.8982142857142857,
+     0.8703960464890462,
+     0.920606249191159
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.006813261029338736
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 25859.0,
+    "median_input_raw": 25859.0,
+    "median_output": 1594.0,
+    "median_api_s": 10.246
+   },
+   "ALL": {
+    "utility": [
+     0.8041237113402062,
+     0.7142143988267906,
+     0.8708616015540047
+    ],
+    "utility_under_attack": [
+     0.7892518440463646,
+     0.7621632510907005,
+     0.8140080663664718
+    ],
+    "attack_success": [
+     0.018967334035827187,
+     0.012030807459740278,
+     0.029782648208022337
+    ],
+    "n_clean": 97,
+    "n_attack": 949
+   }
+  },
+  "fence": {
+   "banking": {
+    "n_clean": 16,
+    "n_attack": 144,
+    "errors": 0,
+    "utility": [
+     0.625,
+     0.3864064709793481,
+     0.815190174452472
+    ],
+    "utility_under_attack": [
+     0.6111111111111112,
+     0.5295875556674611,
+     0.6868603182732972
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.025984567266588023
+    ],
+    "median_calls": 2.0,
+    "median_input_net": 10027.0,
+    "median_input_raw": 10027.0,
+    "median_output": 1330.5,
+    "median_api_s": 9.265
+   },
+   "slack": {
+    "n_clean": 21,
+    "n_attack": 105,
+    "errors": 0,
+    "utility": [
+     0.38095238095238093,
+     0.20750767797982506,
+     0.5912170418449848
+    ],
+    "utility_under_attack": [
+     0.24761904761904763,
+     0.17494869705401503,
+     0.33810513530420083
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.035295328256842964
+    ],
+    "median_calls": 4.0,
+    "median_input_net": 17720.0,
+    "median_input_raw": 17720.0,
+    "median_output": 1879.5,
+    "median_api_s": 12.904499999999999
+   },
+   "travel": {
+    "n_clean": 20,
+    "n_attack": 140,
+    "errors": 0,
+    "utility": [
+     0.55,
+     0.3420820083075997,
+     0.7418049791429071
+    ],
+    "utility_under_attack": [
+     0.5857142857142857,
+     0.5028905528191262,
+     0.6639596490696181
+    ],
+    "attack_success": [
+     0.1357142857142857,
+     0.08863403938424923,
+     0.20225260258858757
+    ],
+    "median_calls": 4.0,
+    "median_input_net": 40049.0,
+    "median_input_raw": 40049.0,
+    "median_output": 2791.0,
+    "median_api_s": 16.3065
+   },
+   "workspace": {
+    "n_clean": 40,
+    "n_attack": 560,
+    "errors": 0,
+    "utility": [
+     0.775,
+     0.6249660359590695,
+     0.8768404674532148
+    ],
+    "utility_under_attack": [
+     0.8089285714285714,
+     0.7743043933968025,
+     0.8393431274672133
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.006813261029338736
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 25835.0,
+    "median_input_raw": 25835.0,
+    "median_output": 1577.0,
+    "median_api_s": 10.672
+   },
+   "ALL": {
+    "utility": [
+     0.6185567010309279,
+     0.5191255982790657,
+     0.708954876445651
+    ],
+    "utility_under_attack": [
+     0.6838777660695469,
+     0.6536039787004962,
+     0.7126688624516951
+    ],
+    "attack_success": [
+     0.020021074815595362,
+     0.012854118158289364,
+     0.031058322272523052
+    ],
+    "n_clean": 97,
+    "n_attack": 949
+   }
+  },
+  "fence-dir": {
+   "banking": {
+    "n_clean": 16,
+    "n_attack": 144,
+    "errors": 0,
+    "utility": [
+     0.6875,
+     0.4440393186673406,
+     0.8583556494803894
+    ],
+    "utility_under_attack": [
+     0.6111111111111112,
+     0.5295875556674611,
+     0.6868603182732972
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.025984567266588023
+    ],
+    "median_calls": 2.0,
+    "median_input_net": 10031.0,
+    "median_input_raw": 10031.0,
+    "median_output": 1405.5,
+    "median_api_s": 9.1545
+   },
+   "slack": {
+    "n_clean": 21,
+    "n_attack": 105,
+    "errors": 0,
+    "utility": [
+     0.5714285714285714,
+     0.3654621629703244,
+     0.7553030051347894
+    ],
+    "utility_under_attack": [
+     0.3904761904761905,
+     0.3026064253865297,
+     0.4860773131840168
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.035295328256842964
+    ],
+    "median_calls": 4.0,
+    "median_input_net": 17698.5,
+    "median_input_raw": 17698.5,
+    "median_output": 1807.5,
+    "median_api_s": 12.144
+   },
+   "travel": {
+    "n_clean": 20,
+    "n_attack": 140,
+    "errors": 0,
+    "utility": [
+     0.6,
+     0.3865779423152061,
+     0.7811960325858074
+    ],
+    "utility_under_attack": [
+     0.5428571428571428,
+     0.4602936027719097,
+     0.6231314981724624
+    ],
+    "attack_success": [
+     0.12857142857142856,
+     0.08289721907810717,
+     0.19408523940400096
+    ],
+    "median_calls": 4.0,
+    "median_input_net": 39952.0,
+    "median_input_raw": 39952.0,
+    "median_output": 2738.5,
+    "median_api_s": 16.425
+   },
+   "workspace": {
+    "n_clean": 40,
+    "n_attack": 560,
+    "errors": 0,
+    "utility": [
+     0.8,
+     0.6524239261814333,
+     0.8950013502683314
+    ],
+    "utility_under_attack": [
+     0.8571428571428571,
+     0.8257233831701525,
+     0.8836957160946055
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.006813261029338736
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 25770.5,
+    "median_input_raw": 25770.5,
+    "median_output": 1588.0,
+    "median_api_s": 10.646
+   },
+   "ALL": {
+    "utility": [
+     0.6907216494845361,
+     0.5929522976148841,
+     0.7739597704205298
+    ],
+    "utility_under_attack": [
+     0.7218124341412012,
+     0.692451181711684,
+     0.7493851109103006
+    ],
+    "attack_success": [
+     0.018967334035827187,
+     0.012030807459740278,
+     0.029782648208022337
+    ],
+    "n_clean": 97,
+    "n_attack": 949
+   }
+  },
+  "mip": {
+   "banking": {
+    "n_clean": 16,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.3125,
+     0.14164435051961052,
+     0.5559606813326594
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 4589.5,
+    "median_input_raw": 4589.5,
+    "median_output": 1368.5,
+    "median_api_s": 8.344999999999999
+   },
+   "slack": {
+    "n_clean": 21,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.047619047619047616,
+     0.008455769471923294,
+     0.22669816586235464
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 2,
+    "median_input_net": 2965,
+    "median_input_raw": 2965,
+    "median_output": 1088,
+    "median_api_s": 6.98
+   },
+   "travel": {
+    "n_clean": 20,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.55,
+     0.3420820083075997,
+     0.7418049791429071
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 7.5,
+    "median_input_net": 10808.5,
+    "median_input_raw": 10808.5,
+    "median_output": 2570.5,
+    "median_api_s": 21.025
+   },
+   "workspace": {
+    "n_clean": 40,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.45,
+     0.30705075280944694,
+     0.6017117011155924
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 7707.5,
+    "median_input_raw": 7707.5,
+    "median_output": 1269.5,
+    "median_api_s": 9.195
+   },
+   "ALL": {
+    "utility": [
+     0.36082474226804123,
+     0.27224345484520945,
+     0.4600099009127316
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n_clean": 97,
+    "n_attack": 0
+   }
+  },
+  "mip-dir": {
+   "banking": {
+    "n_clean": 16,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.375,
+     0.18480982554752806,
+     0.613593529020652
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 3940.5,
+    "median_input_raw": 3940.5,
+    "median_output": 1385.0,
+    "median_api_s": 8.870000000000001
+   },
+   "slack": {
+    "n_clean": 21,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.047619047619047616,
+     0.008455769471923294,
+     0.22669816586235464
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 2,
+    "median_input_net": 3727,
+    "median_input_raw": 3727,
+    "median_output": 1050,
+    "median_api_s": 7.68
+   },
+   "travel": {
+    "n_clean": 20,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.55,
+     0.3420820083075997,
+     0.7418049791429071
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 8.0,
+    "median_input_net": 11351.0,
+    "median_input_raw": 11351.0,
+    "median_output": 2765.5,
+    "median_api_s": 19.375
+   },
+   "workspace": {
+    "n_clean": 40,
+    "n_attack": 0,
+    "errors": 0,
+    "utility": [
+     0.55,
+     0.39828829888440775,
+     0.6929492471905531
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "median_calls": 3.0,
+    "median_input_net": 6975.0,
+    "median_input_raw": 6975.0,
+    "median_output": 1130.5,
+    "median_api_s": 7.58
+   },
+   "ALL": {
+    "utility": [
+     0.41237113402061853,
+     0.3195716568793632,
+     0.5118471226719331
+    ],
+    "utility_under_attack": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "attack_success": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n_clean": 97,
+    "n_attack": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+core/target/
+lean/.lake/
+bench/mcpmark/upstream/
+bench/mcpmark/fixtures/
+bench/mcpmark/runs/
+.venv/
+.DS_Store

@@ -1,0 +1,5 @@
+name = "mip"
+defaultTargets = ["MIP"]
+
+[[lean_lib]]
+name = "MIP"

@@ -1,0 +1,327 @@
+{
+ "date": "2026-10-21 15:15",
+ "tmp": "/private/var/folders/3d/kf1g05s95nv0wzz05hhs3l240000gn/T/mipgw-wnchjako",
+ "limits": [
+  "APPROVAL IS NOT YET HUMAN-BOUND. needs_approval returns the approve token in the tool result, so the model could re-call run() with it without asking anyone. The fix is MCP elicitation (elicitation/create) so the client asks the user out of band; not built yet. Until then a client must show needs_approval to the user itself.",
+  "intent is an argument of run(), so in a normal MCP client the model fills it in. respond() now returns untrusted-derived data to the model (marked [untrusted-derived]). Injected text in such an answer can therefore reach the model and shape the intent of its NEXT run() call; within one run() the kernel still holds. A client that passes the user's real message as intent, or keeps untrusted-derived answers out of the planner's context, closes this.",
+  "The reader (ask) is a model: it can be fooled by injected text into returning wrong values. Its answers keep every input label, so a fooled answer can still never pick a destination; it can only produce wrong data inside the user-named scope.",
+  "Only stdio upstreams. Streamable HTTP / SSE upstream servers are not supported yet.",
+  "Plans see upstream text content only (joined `text` parts); images, resources and structuredContent are not passed into plans.",
+  "The scope rule judges an untrusted path by its scope, but the kernel's other checks still apply to that scope: after a branch or loop on untrusted data (STRICT control flow), a write inside the scope returns needs_approval, not allow. So 'for each file, if it contains X, rename it' needs approval; a comprehension filter followed by the write does not.",
+  "The scope rule applies to tools named write_file, edit_file, create_directory and move_file on ANY upstream server, since the table matches by tool name.",
+  "Plan limits are a step count and a value-size cap (1,000,000); there is no wall-clock timeout on plan execution.",
+  "Execution is sequential and live: calls before a deny or a needs_approval stop have already happened. Approval re-runs the whole plan, repeating earlier calls.",
+  "Write content is not checked; only destinations are. mip.decide() is called with an empty body, because the kernel's quote rule is for messages to people, not files in a user-named folder.",
+  "Sink detection: a fixed table (write_file, edit_file, create_directory, move_file, fetch) plus any tool annotated destructiveHint/openWorldHint with a path-, URL- or address-like argument. A server that writes without saying so and with an unusual argument name is not caught.",
+  "Paths are compared case-sensitively after realpath. canon() lowercases, so on a case-sensitive filesystem the kernel cannot tell /A from /a; the gateway's own prefix check can.",
+  "The kernel's 'appeared in untrusted data before you typed it' rule returns CONFIRM when a read result (e.g. directory_tree, search_files) prints the user-named folder. Results of sink calls are excluded from that check.",
+  "Only one MCP client at a time (one stdio session); no notifications/tools/list_changed forwarding from upstreams."
+ ],
+ "tests": [
+  {
+   "group": "protocol",
+   "name": "handshake_and_tools_list",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "protocol",
+   "name": "description_has_fast_tool_and_namespaced_signatures",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "honest",
+   "name": "read_then_write_in_allowed_dir",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "honest",
+   "name": "mkdir_write_move_in_allowed_dir",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "honest",
+   "name": "memory_server_write_and_search",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "honest",
+   "name": "everything_server_calls",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "honest",
+   "name": "gzip_tool_with_inline_data_uri_allowed",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "honest",
+   "name": "fetch_user_named_url",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "control_injection_succeeds_without_mip",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "injection_write_secret_outside_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "injection_chooses_filename_inside_allowed_dir_allowed",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "traversal",
+   "name": "injected_filename_cannot_escape_scope",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "untrusted_url_still_denied_after_scope_rule",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "injection_fetch_exfil_same_origin_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "injection_fetch_attacker_url_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "open_world_annotation_rule_blocks_gzip_url",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "untrusted_branch_needs_approval_then_runs",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "lookalike",
+   "name": "homoglyph_directory_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "lookalike",
+   "name": "prefix_sibling_directory_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "lookalike",
+   "name": "homoglyph_url_host_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "traversal",
+   "name": "dotdot_escape_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "traversal",
+   "name": "symlink_escape_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "traversal",
+   "name": "move_out_of_allowed_dir_denied",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "reader",
+   "name": "ask_extracts_filename_and_write_uses_it",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "reader",
+   "name": "ask_rejects_wrong_type",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "injection_through_reader_cannot_write_outside",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "attack",
+   "name": "injection_through_reader_cannot_fetch_attacker",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "reader",
+   "name": "respond_returns_untrusted_derived_answer",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "reader",
+   "name": "plain_python_finds_file_without_reader",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "reader",
+   "name": "found_file_rename_succeeds_inside_scope",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "plan",
+   "name": "plan_limits_and_runtime_errors_are_fixed_codes",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "model",
+   "name": "live_reader_through_claude_cli",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "plan",
+   "name": "bad_plans_rejected_before_any_call",
+   "result": "pass",
+   "detail": ""
+  },
+  {
+   "group": "plan",
+   "name": "wrap_prints_config",
+   "result": "pass",
+   "detail": ""
+  }
+ ],
+ "upstream_versions": {
+  "fetch": "2026.10.19",
+  "memory": "2.0.0",
+  "everything": "2.0.0",
+  "filesystem": "2.0.0"
+ },
+ "tokens": {
+  "direct": {
+   "tools_list_json": 9392,
+   "api_tools": 4539,
+   "tools": 40
+  },
+  "per_server": {
+   "filesystem": {
+    "tools": 14,
+    "tools_list_json": 3278,
+    "api_tools": 1693
+   },
+   "memory": {
+    "tools": 9,
+    "tools_list_json": 3007,
+    "api_tools": 975
+   },
+   "everything": {
+    "tools": 16,
+    "tools_list_json": 2795,
+    "api_tools": 1643
+   },
+   "fetch": {
+    "tools": 1,
+    "tools_list_json": 312,
+    "api_tools": 228
+   }
+  },
+  "gateway": {
+   "tools": 1,
+   "tools_list_json": 552,
+   "api_tools": 533
+  }
+ },
+ "latency": {
+  "read_text_file": {
+   "n": 200,
+   "direct_ms": {
+    "median": 0.21435448434203863,
+    "p95": 0.2779171336442232
+   },
+   "gateway_ms": {
+    "median": 0.3620210336521268,
+    "p95": 0.44950004667043686
+   },
+   "overhead_ms": {
+    "median": 0.14766654931008816,
+    "p95": 0.17158291302621365
+   }
+  },
+  "write_file (sink, decide runs)": {
+   "n": 200,
+   "direct_ms": {
+    "median": 0.24085398763418198,
+    "p95": 0.35791704431176186
+   },
+   "gateway_ms": {
+    "median": 0.40752149652689695,
+    "p95": 0.5515830125659704
+   },
+   "overhead_ms": {
+    "median": 0.16666750889271498,
+    "p95": 0.19366596825420856
+   }
+  }
+ },
+ "startup": {
+  "runs": 3,
+  "gateway_to_tools_list_s": {
+   "median": 1.6514675409998745,
+   "all": [
+    1.6514675409998745,
+    8.328991833142936,
+    1.533445208100602
+   ]
+  },
+  "upstreams_alone_parallel_s": {
+   "median": 1.952015166869387,
+   "all": [
+    3.6060745420400053,
+    1.952015166869387,
+    1.1967452091630548
+   ]
+  },
+  "gateway_own_overhead_s": -0.30054762586951256
+ },
+ "live_reader": {
+  "seconds": 5.50354174990207,
+  "answer": "Thursday"
+ },
+ "counts": {
+  "pass": 34,
+  "fail": 0,
+  "skip": 0
+ }
+}
